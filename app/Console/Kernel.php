@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use Laravel\Sactum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
