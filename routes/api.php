@@ -23,16 +23,22 @@ Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/caravans',[CaravanController::class,'index']);
 Route::get('/caravans/search/{name}',[CaravanController::class,'search']);
+Route::post('/caravans',[CaravanController::class,'store']);
+Route::put('/caravans/{id}',[CaravanController::class,'update']);
+Route::delete('/caravans/{id}',[CaravanController::class,'destroy']);
+Route::get('/caravans/{id}',[CaravanController::class,'show']);
+Route::post('/logout',[AuthController::class,'logout']);
+
 
 //Protected
-Route::group(['middleware'=>['auth:sanctum']] ,function () {
-    Route::post('/caravans',[CaravanController::class,'store']);
-    Route::put('/caravans/{id}',[CaravanController::class,'update']);
-    Route::delete('/caravans/{id}',[CaravanController::class,'destroy']);
-    Route::get('/caravans/{id}',[CaravanController::class,'show']);
-    Route::post('/logout',[AuthController::class,'logout']);
+// Route::group(['middleware'=>['auth:sanctum']] ,function () {
+//     Route::post('/caravans',[CaravanController::class,'store']);
+//     Route::put('/caravans/{id}',[CaravanController::class,'update']);
+//     Route::delete('/caravans/{id}',[CaravanController::class,'destroy']);
+//     Route::get('/caravans/{id}',[CaravanController::class,'show']);
+//     Route::post('/logout',[AuthController::class,'logout']);
 
-});
+// });
 
 // Route::get('/caravans',function(){return Caravan::all();});
 
