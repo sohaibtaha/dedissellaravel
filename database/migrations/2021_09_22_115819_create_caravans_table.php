@@ -17,9 +17,9 @@ class CreateCaravansTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('platenumber');
-            $table->integer('capactiy');
+            $table->integer('capacity');
             $table->string('brand');
-            $table->string('chassis number');
+            $table->string('chassisnumber');
             $table->string('description')->nullable;
             $table->decimal('priceweekly');
             $table->decimal('pricedaily');

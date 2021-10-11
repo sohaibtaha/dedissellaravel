@@ -26,8 +26,10 @@ class CaravanController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'slug'=>'required',
-            'price'=>'required' 
+            'platenumber'=>'required',
+            'capacity'=>'required',
+            'chassisnumber'=>'required'
+
         ]);
 
 

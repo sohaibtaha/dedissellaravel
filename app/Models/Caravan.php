@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Caravan extends Model
 {
     use HasFactory;
-    protected $fillable =['name','slug','description','price'];
+    protected $fillable =['name','platenumber','capacity','brand','chassisnumber','description','priceweekly','pricedaily'];
 }
  
