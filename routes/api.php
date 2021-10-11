@@ -5,6 +5,7 @@ use App\Http\Controllers\CaravanController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Password;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,27 @@ use Illuminate\Support\Facades\Route;
 // Route::resource('caravans', CaravanController::class);
 
 // Route::post('/login', 'AuthController:@login');
+// Route::post('/reset-password',[AuthController::class,'resetpassword']);
+// 
+Route::post('/reset-password', function (Request $request) {
+    $request->validate([
+        'token' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|confirmed',
+    ]);
+
+    $status = Password::reset(
+        $request->only('email', 'password', 'password_confirmation','token'),
+        function ($user, $password) {
+            $user->forceFill([
+                'password' => Hash::make($password)
+            ])->setRememberToken(Str::random(60));
+
+            $user->save();
+
+            event(new PasswordReset($user));
+        }
+    );});
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/caravans',[CaravanController::class,'index']);

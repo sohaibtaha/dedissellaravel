@@ -16,9 +16,13 @@ class CreateCaravansTable extends Migration
         Schema::create('caravans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
+            $table->string('platenumber');
+            $table->integer('capactiy');
+            $table->string('brand');
+            $table->string('chassis number');
             $table->string('description')->nullable;
-            $table->decimal('price', 5, 2);
+            $table->decimal('priceweekly');
+            $table->decimal('pricedaily');
             $table->timestamps();
         });
     }
